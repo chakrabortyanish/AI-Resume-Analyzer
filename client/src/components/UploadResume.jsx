@@ -63,21 +63,18 @@ export default function UploadResume() {
   const handleAnalyze = async () => {
     if (!file) return alert("Please select a file first!");
 
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    // simulate AI processing
-    setTimeout(() => {
-      setData({
-        score: 89,
-        skills: ["React", "Node.js", "MongoDB", "TypeScript"],
-        jobs: [
-          { role: "Frontend Developer", match: 92 },
-          { role: "Backend Developer", match: 85 },
-        ],
-      });
+      const data = await uploadResume(file);
 
+      setData(data.data); // your backend returns { success, data }
+    } catch (error) {
+      console.error(error);
+      alert("Upload failed");
+    } finally {
       setLoading(false);
-    }, 2500);
+    }
   };
 
   return (

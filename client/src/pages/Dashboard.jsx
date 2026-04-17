@@ -11,7 +11,7 @@ import Navbar from "../components/Navbar";
 import { AppContext } from "../contextAPI/AppContext";
 
 export default function Dashboard() {
-  const { loading, setLoading, data, setData } = React.useContext(AppContext);
+  const { loading, data } = React.useContext(AppContext);
   const cardVariant = {
     hidden: { opacity: 0, y: 40 },
     visible: {
@@ -24,7 +24,7 @@ export default function Dashboard() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 pb-[80px] pt-[20px]">
-        <Navbar />
+        {/* <Navbar /> */}
 
         <div className="max-w-[1100px] mx-auto mt-[40px]">
           {/* 🔥 UPLOAD SCREEN */}
@@ -65,15 +65,15 @@ export default function Dashboard() {
                     ANALYSIS COMPLETE
                   </p>
 
-                  <h2 className="text-2xl font-bold mb-3">Your Resume</h2>
+                  <h2 className="text-2xl font-bold mb-3">{data.name}</h2>
 
                   <p className="text-gray-600 mb-4">
-                    Strong profile with solid technical skills.
+                    {data.summary}
                   </p>
 
                   <div className="flex gap-3 flex-wrap">
                     <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">
-                      ✔ ATS Optimized
+                      {data.ats == "Optimized"? "✅" : "❌"} ATS {data.ats}
                     </span>
                     <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">
                       🎯 High Match
@@ -98,19 +98,19 @@ export default function Dashboard() {
 
                 <div className="bg-blue-100 p-4 rounded-xl">
                   <p className="text-sm text-gray-500">Skills Found</p>
-                  <h2 className="text-xl font-bold">12</h2>
+                  <h2 className="text-xl font-bold">{data.skills.length}</h2>
                   <p className="text-xs text-blue-600">Strong Profile</p>
                 </div>
 
                 <div className="bg-green-100 p-4 rounded-xl">
                   <p className="text-sm text-gray-500">Job Match</p>
-                  <h2 className="text-xl font-bold">95%</h2>
+                  <h2 className="text-xl font-bold">{data.jobMatch}%</h2>
                   <p className="text-xs text-green-600">High Match</p>
                 </div>
 
                 <div className="bg-purple-100 p-4 rounded-xl">
                   <p className="text-sm text-gray-500">ATS Status</p>
-                  <h2 className="text-xl font-bold">Optimized</h2>
+                  <h2 className="text-xl font-bold">{data.ats}</h2>
                   <p className="text-xs text-purple-600">Compatible</p>
                 </div>
               </div>
@@ -118,14 +118,14 @@ export default function Dashboard() {
               <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
                 {/* LEFT */}
                 <div className="space-y-6">
-                  <SkillsCard skills={data.skills} />
+                  <SkillsCard/>
                   <Tips />
                 </div>
 
                 {/* RIGHT */}
                 <div className="space-y-6">
                   <Improvements />
-                  <Jobs jobs={data.jobs} />
+                  <Jobs />
                 </div>
               </div>
             </motion.div>

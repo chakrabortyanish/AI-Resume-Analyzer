@@ -1,19 +1,14 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { AppContext } from "../contextAPI/AppContext";
 
 const cardVariant = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
-export default function SkillsCard({ skills }) {
-  const data = {
-    skills: ["React", "TypeScript", "Node.js", "Python", "SQL", "AWS"],
-    jobs: [
-      { role: "Senior Software Engineer", match: 92 },
-      { role: "Full Stack Developer", match: 87 },
-      { role: "Data Analyst", match: 85 },
-    ],
-  };
+export default function SkillsCard() {
+  const { data } = React.useContext(AppContext);
 
   return (
     <motion.div

@@ -1,10 +1,10 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link } from "react-router-dom";
 import nav_logo from "../assets/nav-logo.png";
 import AuthModal from "./AuthModal";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -25,13 +25,14 @@ export default function Navbar() {
 
         {/* Button */}
         <button
-          onClick={() => setOpen(true)}
-          className="px-5 py-2 max-sm:px-2 max-sm:text-sm rounded-xl text-white font-bold bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer"
+          // onClick={() => setOpen(true)}
+          className="px-5 py-2 max-sm:px-2 max-sm:text-sm rounded-xl text-white font-semibold bg-gradient-to-r from-blue-500 to-indigo-600 hover:scale-105 hover:shadow-xl transition-all duration-300 cursor-pointer"
         >
-          Log In
+          {/* Log In */}
+          <Link to="/upload-resume">Upload Resume</Link>
         </button>
       </nav>
-      <AuthModal isOpen={open} onClose={() => setOpen(false)} />
+      {/* <AuthModal isOpen={open} onClose={() => setOpen(false)} /> */}
     </>
   );
 }

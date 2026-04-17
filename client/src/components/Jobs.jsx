@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { AppContext } from "../contextAPI/AppContext";
 
 const cardVariant = {
   hidden: { opacity: 0, y: 20 },
@@ -7,45 +8,64 @@ const cardVariant = {
 };
 
 const Jobs = () => {
+  const { data } = React.useContext(AppContext);
 
-     const data = {
-    skills: ["React", "TypeScript", "Node.js", "Python", "SQL", "AWS"],
-    jobs: [
-      { role: "Senior Software Engineer", match: 92 },
-      { role: "Full Stack Developer", match: 87 },
-      { role: "Data Analyst", match: 85 },
-    ],
-  };
+  // Calculate top match (optional UI improvement)
+  const topMatch =
+    data?.recommendedJobs?.length > 0
+      ? Math.max(...data.recommendedJobs.map((job) => job.match))
+      : 0;
 
   return (
     <motion.div
       variants={cardVariant}
       className="w-full bg-white p-5 rounded-xl shadow space-y-4"
     >
+      {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold">Recommended Jobs</h3>
-        <span className="text-green-600 font-semibold">95%</span>
+        <span className="text-green-600 font-semibold">
+          {topMatch}%
+        </span>
       </div>
 
+      {/* Jobs List */}
       <div className="space-y-3">
-        {data.jobs.map((job, i) => (
+        {data?.recommendedJobs?.map((job, i) => (
           <div
             key={i}
             className="flex flex-col md:flex-row justify-between items-center bg-gray-50 p-3 rounded-lg"
           >
-            <span className="font-medium">{job.role}</span>
+            {/* Job Title */}
+            <span className="font-medium">{job.title}</span>
 
-            <div className="flex items-center gap-3">
+            {/* Right Section */}
+            <div className="flex items-center gap-3 mt-2 md:mt-0">
+              {/* Match */}
               <span className="text-green-500 text-sm font-semibold">
                 {job.match}% match
               </span>
-              <button className="bg-orange-500 text-white px-4 py-1 rounded-lg text-sm hover:bg-orange-600">
+
+              {/* Apply Button */}
+              <a
+                href={job.applyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-orange-500 text-white px-4 py-1 rounded-lg text-sm hover:bg-orange-600 transition"
+              >
                 Apply
-              </button>
+              </a>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Fallback */}
+      {!data?.recommendedJobs?.length && (
+        <p className="text-gray-400 text-sm text-center">
+          No job recommendations yet
+        </p>
+      )}
     </motion.div>
   );
 };
