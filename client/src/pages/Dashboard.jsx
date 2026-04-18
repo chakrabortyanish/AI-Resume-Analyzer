@@ -9,6 +9,7 @@ import Jobs from "../components/Jobs";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { AppContext } from "../contextAPI/AppContext";
+import TopStats from "../components/TopStats";
 
 export default function Dashboard() {
   const { loading, data } = React.useContext(AppContext);
@@ -89,31 +90,8 @@ export default function Dashboard() {
               </motion.div>
 
               {/* 🔥 TOP STATS */}
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-yellow-100 p-4 rounded-xl">
-                  <p className="text-sm text-gray-500">Score</p>
-                  <h2 className="text-xl font-bold">89/100</h2>
-                  <p className="text-xs text-green-600">Excellent</p>
-                </div>
+              <TopStats/>
 
-                <div className="bg-blue-100 p-4 rounded-xl">
-                  <p className="text-sm text-gray-500">Skills Found</p>
-                  <h2 className="text-xl font-bold">{data.skills.length}</h2>
-                  <p className="text-xs text-blue-600">Strong Profile</p>
-                </div>
-
-                <div className="bg-green-100 p-4 rounded-xl">
-                  <p className="text-sm text-gray-500">Job Match</p>
-                  <h2 className="text-xl font-bold">{data.jobMatch}%</h2>
-                  <p className="text-xs text-green-600">High Match</p>
-                </div>
-
-                <div className="bg-purple-100 p-4 rounded-xl">
-                  <p className="text-sm text-gray-500">ATS Status</p>
-                  <h2 className="text-xl font-bold">{data.ats}</h2>
-                  <p className="text-xs text-purple-600">Compatible</p>
-                </div>
-              </div>
               {/* 🔥 GRID */}
               <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-6">
                 {/* LEFT */}

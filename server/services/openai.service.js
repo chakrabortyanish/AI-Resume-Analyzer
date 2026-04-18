@@ -15,6 +15,9 @@ You are an advanced ATS Resume Analyzer.
 
 Analyze the given resume and return ONLY valid JSON (no explanation, no markdown).
 
+Very very IMPORTANT:
+  - check the pdf actual resume/CV  
+
 Follow this STRICT structure:
 
 {
