@@ -88,7 +88,6 @@ export default function UploadResume() {
       </p>
 
       <motion.div className="max-w-[450px] h-[350px] bg-white shadow-xl rounded-2xl p-8 text-center mx-auto">
-
         {/* 🔥 DROP AREA */}
         <div
           onDragEnter={handleDrag}
@@ -125,15 +124,15 @@ export default function UploadResume() {
             </label>
 
             {/* FILE NAME */}
-            {file && (
+            {file ? (
               <p className="text-sm text-green-600 mt-3 font-medium">
                 {file.name}
               </p>
+            ) : (
+              <p className="text-xs text-gray-400 pt-3">
+                Supported: PDF, DOC, DOCX
+              </p>
             )}
-
-            <p className="text-xs text-gray-400 pt-3">
-              Supported: PDF, DOC, DOCX
-            </p>
           </div>
         </div>
       </motion.div>

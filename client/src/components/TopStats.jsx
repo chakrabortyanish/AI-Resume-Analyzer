@@ -43,7 +43,7 @@ const TopStats = () => {
   const ats = data?.ats || "N/A";
 
   // 🔥 Skills count (technical + soft)
-  const skillsCount = data.skills.length;
+  const skillsCount = data?.skills?.length;
 
   return (
     <motion.div

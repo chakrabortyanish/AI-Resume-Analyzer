@@ -17,7 +17,7 @@ export const uploadResume = async (req, res) => {
 
     // 2. Send to OpenAI
     const analysis = await analyzeResume(text);
-
+    console.log("Resume analysis result:", analysis); // 🔥 Debug log for OpenAI response
     // 3. Send response
     res.json({
       success: true,

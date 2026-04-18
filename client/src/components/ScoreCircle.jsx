@@ -19,7 +19,7 @@ const ScoreCircle = ({ score }) => {
 
       {/* Glow Background */}
       <div
-        className="absolute inset-0 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition duration-500"
+        className="absolute inset-0 rounded-full blur-xl opacity-40  transition duration-500"
         style={{ background: getColor() }}
       ></div>
 
@@ -41,7 +41,7 @@ const ScoreCircle = ({ score }) => {
       </div>
 
       {/* Pulse Animation Ring */}
-      <div className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping opacity-20"></div>
+      <div className="absolute inset-0 rounded-full border-2 border-white/30 opacity-20"></div>
 
     </div>
   );

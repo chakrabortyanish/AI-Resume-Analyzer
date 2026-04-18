@@ -24,10 +24,10 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 pb-[80px] pt-[20px]">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 pb-[80px] p-[20px] max-md:p-[8px] p-[20px] max-md:pb-[60px]">
         {/* <Navbar /> */}
 
-        <div className="max-w-[1100px] mx-auto mt-[40px]">
+        <div className="max-w-[1100px] mx-auto">
           {/* 🔥 UPLOAD SCREEN */}
           {!data && !loading && <UploadResume />}
 
@@ -38,7 +38,7 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               className="text-center mt-20"
             >
-              <div className="animate-spin h-14 w-14 border-t-4 border-blue-500 rounded-full mx-auto mb-4"></div>
+              <div className="animate-spin h-[200px] w-[200px] max-md:h-[100px] max-md:w-[100px] border-t-4 border-blue-500 rounded-full mx-auto mb-4"></div>
               <p className="text-gray-600 font-medium">
                 Analyzing your resume...
               </p>
@@ -68,22 +68,13 @@ export default function Dashboard() {
 
                   <h2 className="text-2xl font-bold mb-3">{data.name}</h2>
 
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 mb-4 font-serif">
                     {data.summary}
                   </p>
-
-                  <div className="flex gap-3 flex-wrap">
-                    <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">
-                      {data.ats == "Optimized"? "✅" : "❌"} ATS {data.ats}
-                    </span>
-                    <span className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-sm">
-                      🎯 High Match
-                    </span>
-                  </div>
                 </div>
 
-                <div className="flex justify-center items-center">
-                  <div className="w-28 h-28">
+                <div className="flex justify-center items-center ml-2">
+                  <div className="w-30 h-30 shadow p-[10px] rounded">
                     <ScoreCircle score={data.score} />
                   </div>
                 </div>

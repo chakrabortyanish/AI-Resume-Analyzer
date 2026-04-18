@@ -1,23 +1,29 @@
 import Navbar from "../components/Navbar";
-import cv_1 from "../assets/dummy-cv/cv-1.png";
 import ScoreCircle1 from "../components/ScoreCircle.jsx";
 import Footer from "../components/Footer.jsx";
 
 import { FaUpload, FaBrain, FaLightbulb, FaBriefcase } from "react-icons/fa";
 
+import cv_1 from "../assets/dummy-cv/cv-1.png";
+import cv_2 from "../assets/dummy-cv/cv-2.png";
+import cv_3 from "../assets/dummy-cv/cv-3.png";
+import cv_4 from "../assets/dummy-cv/cv-4.png";
+import cv_5 from "../assets/dummy-cv/cv-5.png";
+import cv_6 from "../assets/dummy-cv/cv-6.png";
+
 export default function Home() {
   const dummyData = [
-    { img: cv_1, score: 85 },
+    { img: cv_6, score: 85 },
     { img: cv_1, score: 50 },
-    { img: cv_1, score: 40 },
-    { img: cv_1, score: 20 },
-    { img: cv_1, score: 95 },
-    { img: cv_1, score: 65 },
+    { img: cv_2, score: 40 },
+    { img: cv_3, score: 20 },
+    { img: cv_4, score: 95 },
+    { img: cv_5, score: 65 },
   ];
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-gray-100 to-blue-100 pt-[20px] pb-[80px]">
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-gray-100 to-blue-100 pt-[20px] pb-[80px] p-[20px] max-md:p-[8px] max-md:pb-[60px]">
         <Navbar />
 
         {/* Hero Section */}
@@ -65,13 +71,13 @@ export default function Home() {
             {dummyData.map((d, i) => (
               <div
                 key={i}
-                className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-500 hover:-translate-y-2"
+                className="group relative rounded-2xl overflow-hidden shadow hover:shadow-2xl transition duration-500 hover:-translate-y-2"
               >
                 {/* Image */}
                 <img
                   src={d.img}
                   alt={`CV ${i}`}
-                  className="w-full h-[300px] object-cover group-hover:scale-110 transition duration-500"
+                  className="w-full h-[300px] object-fit group-hover:scale-110 transition duration-500"
                 />
 
                 {/* Overlay Gradient */}
